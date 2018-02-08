@@ -43,10 +43,10 @@ namespace big_splitter
 
         public enum BIGType
         {
-            Unknown, 
-            USA, 
-            EUR, 
-            JAP, 
+            Unknown,
+            USA,
+            EUR,
+            JAP,
             Review,
             Demo
         }
@@ -88,14 +88,14 @@ namespace big_splitter
             BIGType reg = DetectBig(md5);
 
             Console.WriteLine("md5 = " + md5);
-            Console.WriteLine(NameBig(reg) + "\r\n");
+            Console.WriteLine(NameBig(reg) + Environment.NewLine);
 
 
             if (reg == BIGType.Unknown)
                 File.WriteAllText("unknown_md5.txt", md5);
 
 
-            string[] buf = File.ReadAllLines(System.AppDomain.CurrentDomain.BaseDirectory+"filenames.txt");
+            string[] buf = File.ReadAllLines(Environment.CurrentDirectory + Path.DirectorySeparatorChar + "filenames.txt");
 
             foreach (string b in buf)
             {
@@ -137,8 +137,8 @@ namespace big_splitter
         {
             int i = 0;
 
-            Directory.CreateDirectory(Path.GetDirectoryName(path) + "\\BIGFILE\\");
-            Console.Write(pairs.Count + " files:\r\n");
+            Directory.CreateDirectory(Path.GetDirectoryName(path) + Path.DirectorySeparatorChar + "BIGFILE" + Path.DirectorySeparatorChar);
+            Console.Write(pairs.Count + " files:" + Environment.NewLine);
 
             foreach (Pair p in pairs)
             {
@@ -156,7 +156,7 @@ namespace big_splitter
                     case 0x00000010: if (h2 == 2) knownext = ".tim"; break;
                     case 0x00000020: knownext = ".vram"; break;
                     case 0x80010160: knownext = ".str"; break;
-                    //default: knownext = ""; break;
+                        //default: knownext = ""; break;
                 }
 
                 if (p.size == 0) knownext = ".null";
@@ -170,16 +170,16 @@ namespace big_splitter
                 if (names.ContainsKey(i))
                     knownname = names[i];
 
-                string fname = 
-                    Path.GetDirectoryName(path) + 
-                    "\\BIGFILE\\" + 
-                    i.ToString("0000") + 
-                    (knownname !="" ? ("_" + knownname) : "") + 
+                string fname =
+                    Path.GetDirectoryName(path) +
+                    Path.DirectorySeparatorChar + "BIGFILE" + Path.DirectorySeparatorChar +
+                    i.ToString("0000") +
+                    (knownname != "" ? ("_" + knownname) : "") +
                     knownext;
 
                 filelist.Append(i.ToString("0000") +
                     (knownname != "" ? ("_" + knownname) : "") +
-                    knownext + "\r\n");
+                    knownext + Environment.NewLine);
 
                 File.WriteAllBytes(fname, br.ReadBytes((int)p.size));
 
@@ -191,7 +191,7 @@ namespace big_splitter
 
             File.WriteAllText("bigfile.txt", filelist.ToString());
 
-            Console.Write("\r\n");
+            Console.Write(Environment.NewLine);
 
         }
     }

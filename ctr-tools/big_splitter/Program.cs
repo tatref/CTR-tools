@@ -6,7 +6,7 @@ namespace big_splitter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("CTR-Tools - Crash Team Racing BIGFILE Extractor by DCxDemo*\r\n");
+            Console.WriteLine("CTR-Tools - Crash Team Racing BIGFILE Extractor by DCxDemo*" + Environment.NewLine);
 
             if (args.Length > 0)
             {
@@ -17,7 +17,7 @@ namespace big_splitter
             }
             else
             {
-                Console.WriteLine("Usage:\r\n\tSplit: big_splitter <path to bigfile.big>\r\n\tMerge: (to be implemented yet)\r\n");
+                Console.WriteLine("Usage:" + Environment.NewLine + "\tSplit: big_splitter <path to bigfile.big>" + Environment.NewLine + "\tMerge: (to be implemented yet)" + Environment.NewLine);
                 Console.WriteLine("Press any key to quit...");
             }
 
