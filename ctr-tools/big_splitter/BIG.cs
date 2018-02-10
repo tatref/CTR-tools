@@ -137,7 +137,8 @@ namespace big_splitter
         {
             int i = 0;
 
-            Directory.CreateDirectory(Path.GetDirectoryName(path) + Path.DirectorySeparatorChar + "BIGFILE" + Path.DirectorySeparatorChar);
+            string dump_path = System.IO.Directory.GetParent(Path.GetFullPath(path)).ToString() + Path.DirectorySeparatorChar + "BIGFILE" + Path.DirectorySeparatorChar;
+            Directory.CreateDirectory(dump_path);
             Console.Write(pairs.Count + " files:" + Environment.NewLine);
 
             foreach (Pair p in pairs)
@@ -171,8 +172,7 @@ namespace big_splitter
                     knownname = names[i];
 
                 string fname =
-                    Path.GetDirectoryName(path) +
-                    Path.DirectorySeparatorChar + "BIGFILE" + Path.DirectorySeparatorChar +
+                    Path.GetDirectoryName(dump_path) + Path.DirectorySeparatorChar +
                     i.ToString("0000") +
                     (knownname != "" ? ("_" + knownname) : "") +
                     knownext;
