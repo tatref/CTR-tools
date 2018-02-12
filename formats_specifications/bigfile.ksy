@@ -4,13 +4,16 @@ meta:
   application: Crash Team Racing
   file-extension: BIG
   endian: le
-  ks-version: 0.8
+  ks-version: 0.9
+doc: |
+  BIGFILE.BIG parser
+  version 1.0
 
 
 seq:
   - id: magic
     contents: [0, 0, 0, 0]
-  - id: total_files
+  - id: files_count
     type: u4
     doc: number of entries in the bigfile
 
@@ -19,7 +22,7 @@ instances:
     pos: 8
     type: index_entry
     repeat: expr
-    repeat-expr: total_files
+    repeat-expr: files_count
 
 types:
   index_entry:

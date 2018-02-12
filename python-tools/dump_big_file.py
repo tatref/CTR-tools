@@ -27,37 +27,33 @@
 
 
 import sys
+import os
 
 from ctr_big import CtrBig
 
 
-if len(sys.argv) != 2:
-    print('Usage: ' + sys.argv[0] + '</path/to/BIGFILE.BIG>')
+if len(sys.argv) != 3:
+    print('Usage: ' + sys.argv[0] + ' </path/to/BIGFILE.BIG> <dump path>')
     sys.exit(1)
 
+bigfile = sys.argv[1]
+dump_path = sys.argv[2]
 
 # parse the file
 # we can also use `from_bytes` to parse from in-memory files
-ctr = CtrBig.from_file(sys.argv[1])
+ctr = CtrBig.from_file(bigfile)
 
 
 print('BIGFILE contains {} entries'.format(ctr.total_files))
 
 
-# just print the index
-for idx, f, in enumerate(ctr.index):
-    print('{:03d}: offset={}, size={}'.format(idx, f.offset * 2048, f.size))
+# actual dump
+for idx, entry in enumerate(ctr.index):
+    print(idx)
 
+    content = entry.file_content
 
-# we can also dump an entry
-entry_id = 0
+    output_filename = dump_path + os.path.sep + '{:03d}'.format(idx)
+    destination = open(output_filename, 'wb')
+    destination.write(content)
 
-# grab the content of the entry
-content = ctr.index[entry_id].file_content
-
-
-output_filename = '{:03d}'.format(entry_id)
-destination = open(output_filename, 'wb')
-destination.write(content)
-
-# done!
