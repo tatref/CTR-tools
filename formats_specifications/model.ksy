@@ -5,6 +5,7 @@ meta:
 doc: |
   Parser for the CTR models
   version 0
+  Original code https://github.com/DCxDemo/CTR-tools
 
 seq:
   - id: header
