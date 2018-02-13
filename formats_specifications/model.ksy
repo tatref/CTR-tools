@@ -15,8 +15,6 @@ instances:
   info_header:
     pos: header.ptr_info_header
     type: info_header
-    repeat: expr
-    repeat-expr: 1
 
 
 types:
