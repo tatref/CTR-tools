@@ -29,7 +29,7 @@
 import sys
 import os
 
-from ctr_big import CtrBig
+from ctr.ctr_big import CtrBig
 
 
 if len(sys.argv) != 3:
