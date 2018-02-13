@@ -4,7 +4,7 @@ meta:
   application: Crash Team Racing
   file-extension: BIG
   endian: le
-  ks-version: 0.9
+  ks-version: 0.8
 doc: |
   BIGFILE.BIG parser
   version 1.0

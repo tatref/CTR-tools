@@ -4,7 +4,7 @@ meta:
   application: Crash Team Racing
   file-extension: xxx
   endian: le
-  ks-version: 0.9
+  ks-version: 0.8
 doc: |
   Parser for the `dance` and `lose` animations
   version 0
