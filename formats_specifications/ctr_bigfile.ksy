@@ -1,5 +1,5 @@
 meta:
-  id: ctr_big
+  id: ctr_bigfile
   title: Crash Team Racing BIGFILE
   application: Crash Team Racing
   file-extension: BIG

@@ -1,5 +1,5 @@
 meta:
-  id: tim2x
+  id: ctr_tim2x
   application: Crash Team Racing
   file-extension: tim2x
   endian: le
